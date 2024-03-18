@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アカウント</title>
+</head>
+<body>
+
+    <h1>アカウント画面</h1>
+    <form id="choiceForm">
+      <button type="button" onclick="goToPage('http://localhost:8080/touroku/')">アカウント制作</button>
+    </form>
+
+    <script>
+        function goToPage(destinationURL) {
+            // 選択されたボタンに対応するページに遷移
+            window.location.href = destinationURL;
+        }
+    </script>
+
+</body>
+</html>
+

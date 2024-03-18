@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>残高管理</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* ページ全体のスタイリング */
+        body {
+            padding: 20px;
+        }
+        
+        /* フォームのスタイリング */
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* ボタンのスタイリング */
+        .btn-primary {
+            width: 100%;
+        }
+
+        /* 入力エリアのスタイリング */
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+        }
+
+        /* 出力エリアのスタイリング */
+        #output {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>アカウント制作</h1>
+     
+        <h4>氏名</h4>
+        <form id="nameForm" class="form-group">
+            <label for="name">氏名:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+        </form>
+     
+        <h4>住所</h4>
+        <form id="addressForm" class="form-group">
+            <label for="address">住所:</label>
+            <input type="text" id="address" name="address" class="form-control" required>
+        </form>
+        
+        <h4>電話番号</h4>
+        <form id="denwaForm" class="form-group">
+            <label for="denwa">電話番号:</label>
+            <input type="tel" id="denwa" name="denwa" class="form-control" required>
+        </form>
+        
+        
+        
+        <!-- フォーム送信時に withdraw 関数を呼び出し、新しいページに移動 -->
+        <button type="button" onclick="withdraw()" class="btn btn-primary mt-4">送信</button>
+
+        <!-- 入力された情報を表示する領域 -->
+        <div id="output" class="mt-4"></div>
+    </div>
+ 
+    <script>
+        function withdraw() {
+            var nameInput = document.getElementById('name');
+            if (!nameInput.value.trim()) {
+                alert('氏名を入力してください');
+                return;
+            }
+
+            var addressInput = document.getElementById('address');
+            if (!addressInput.value.trim()) {
+                alert('住所を入力してください');
+                return;
+            }
+
+            var denwaInput = document.getElementById('denwa');
+            var denwaValue = denwaInput.value.trim();
+
+            // 電話番号の形式チェック
+            if (!/^\d{11}$/.test(denwaValue)) {
+                alert('有効な電話番号を入力してください。');
+                return;
+            }
+
+            // 入力された情報を表示
+            displayInfo(nameInput.value, addressInput.value, denwaValue);
+
+            // ページ遷移
+            window.location.href = "http://localhost:8080/mahopuri";
+        }
+
+        // 入力された情報を表示する関数
+        function displayInfo(name, address, denwa) {
+            var outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = '<p>氏名: ' + name + '</p><p>住所: ' + address + '</p><p>電話番号: ' + denwa + '</p>';
+        }
+    </script>
+ 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

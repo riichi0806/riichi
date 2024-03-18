@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホーム</title>
+    <style>
+        /* ページ全体のスタイリング */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        /* ボタンのスタイリング */
+        button {
+            display: block;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>ホーム</h1>
+
+    <form id="choiceForm">
+        <button type="button" onclick="goToPage('http://localhost:8080/kane')">口座</button>
+        <button type="button" onclick="goToPage('http://localhost:8080/')">選択肢 4</button>
+    </form>
+
+    <script>
+        function goToPage(destinationURL) {
+            // 選択されたボタンに対応するページに遷移
+            window.location.href = destinationURL;
+        }
+    </script>
+</body>
+</html>
